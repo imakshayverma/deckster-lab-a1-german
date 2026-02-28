@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: "Lato", system-ui, sans-serif;
+  background: radial-gradient(circle at top, #f6f1e9 0%, #e7d9c8 45%, #b8c3d9 100%);
+  min-height: 100vh;
+}
+
+.card-surface {
+  background: rgba(246, 241, 233, 0.9);
+  border: 1px solid rgba(16, 16, 20, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.text-shadow {
+  text-shadow: 0 12px 30px rgba(16, 16, 20, 0.2);
+}
+
+.action-chip {
+  border: 1px solid rgba(16, 16, 20, 0.1);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.font-brand {
+  font-family: "Lato", system-ui, sans-serif;
+}
+
+.social-media-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 18px;
+}
+
+.social-media-links a {
+  color: rgba(16, 16, 20, 0.7);
+  transition: color 0.2s ease;
+}
+
+.social-media-links a:hover {
+  color: rgba(16, 16, 20, 1);
+}
