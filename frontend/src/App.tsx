@@ -195,9 +195,17 @@ export default function App() {
     setFlipped((prev) => !prev);
   };
 
+  const resolveAudioUrl = (url: string) => {
+    if (/^https?:\/\//i.test(url)) return url;
+    const baseUrl = import.meta.env.BASE_URL ?? "/";
+    const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+    const cleaned = url.replace(/^\/+/, "");
+    return `${normalizedBase}${cleaned}`;
+  };
+
   const playSound = () => {
     if (!currentCard?.audio_url) return;
-    const audio = new Audio(currentCard.audio_url);
+    const audio = new Audio(resolveAudioUrl(currentCard.audio_url));
     void audio.play();
   };
 
