@@ -1,7 +1,6 @@
 # Deckster Lab
 
-A minimal flash-card app for [https://ankiweb.net/shared/info/293204297](Goethe Institute A1 Wordlist
-). 
+A minimal flash-card app for [Goethe Institute A1 Wordlist](https://ankiweb.net/shared/info/293204297). 
 
 ## Quick start
 
