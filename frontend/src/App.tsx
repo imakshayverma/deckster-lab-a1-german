@@ -197,10 +197,11 @@ export default function App() {
 
   const resolveAudioUrl = (url: string) => {
     if (/^https?:\/\//i.test(url)) return url;
-    const baseUrl = import.meta.env.BASE_URL ?? "/";
-    const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
     const cleaned = url.replace(/^\/+/, "");
-    return `${normalizedBase}${cleaned}`;
+    if (typeof window === "undefined") return `/${cleaned}`;
+    const path = window.location.pathname;
+    const basePath = path.endsWith("/") ? path : path.replace(/[^/]+$/, "");
+    return `${window.location.origin}${basePath}${cleaned}`;
   };
 
   const playSound = () => {
@@ -308,7 +309,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => handleAnswer(false)}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-ink/15 bg-white/80 p-2 text-ink/70 shadow-soft hover:bg-white transition"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-ink/15 bg-transparent p-2 text-ink/70 shadow-sm hover:bg-white/10 transition"
                     aria-label="Don't know"
                     title="Don't know"
                   >
@@ -320,7 +321,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={handleAdvance}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-ink/15 bg-white/80 p-2 text-ink/70 shadow-soft hover:bg-white transition"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-ink/15 bg-transparent p-2 text-ink/70 shadow-sm hover:bg-white/10 transition"
                     aria-label="Next card"
                     title="Next card"
                   >
@@ -466,10 +467,7 @@ export default function App() {
                   <a href="https://github.com/imakshayverma" target="_blank" rel="noreferrer">
                     <i className="fa fa-github" aria-hidden="true"></i>
                   </a>
-                  <a href="https://www.facebook.com/Akshayverma29" target="_blank" rel="noreferrer">
-                    <i className="fa fa-facebook-official" aria-hidden="true"></i>
-                  </a>
-                  <a href="https://www.instagram.com/akshaysahab/" target="_blank" rel="noreferrer">
+                  <a href="https://www.instagram.com/akshayverma295/" target="_blank" rel="noreferrer">
                     <i className="fa fa-instagram" aria-hidden="true"></i>
                   </a>
                   <a href="https://in.linkedin.com/in/imakshayverma" target="_blank" rel="noreferrer">
