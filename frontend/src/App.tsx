@@ -304,44 +304,10 @@ export default function App() {
               className={`relative border border-ink/10 rounded-xl p-6 md:p-10 text-center min-h-[280px] flex items-center justify-center ${flipped ? "bg-slate-100" : "bg-white/70"
                 }`}
             >
-              {!flipped && currentCard && (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => handleAnswer(false)}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-ink/15 bg-transparent p-2 text-ink/70 shadow-sm hover:bg-white/10 transition"
-                    aria-label="Don't know"
-                    title="Don't know"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                      <path d="M5 5L15 15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                      <path d="M15 5L5 15" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
-                    </svg>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleAdvance}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-ink/15 bg-transparent p-2 text-ink/70 shadow-sm hover:bg-white/10 transition"
-                    aria-label="Next card"
-                    title="Next card"
-                  >
-                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                      <path
-                        d="M4.5 10H14.5"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                      />
-                      <path
-                        d="M10.5 6L14.5 10L10.5 14"
-                        stroke="currentColor"
-                        strokeWidth="1.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </button>
-                </>
+              {currentCard && (
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 text-[11px] uppercase tracking-[0.2em] text-ink/40">
+                  {progressLabel}
+                </div>
               )}
               {currentCard ? (
                 <div className="flex flex-col items-center gap-3">
@@ -384,7 +350,7 @@ export default function App() {
                 className="rounded-xl border border-ink/15 px-4 py-3 text-sm font-semibold hover:bg-white/70 transition"
                 disabled={!currentCard}
               >
-                Flip card
+                Show Answer
                 <span className="block text-xs text-ink/50">Arrow down</span>
               </button>
               <button
@@ -392,7 +358,7 @@ export default function App() {
                 className="rounded-xl border border-ink/15 px-4 py-3 text-sm font-semibold hover:bg-white/70 transition disabled:opacity-60"
                 disabled={!currentCard?.audio_url}
               >
-                Play sound
+                Play Sound
                 <span className="block text-xs text-ink/50">Arrow up</span>
               </button>
               <button
@@ -400,7 +366,7 @@ export default function App() {
                 className="rounded-xl bg-moss text-white px-4 py-3 text-sm font-semibold shadow-soft hover:shadow-card transition"
                 disabled={!currentCard}
               >
-                Got it
+                Got it - Next!
                 <span className="block text-xs text-white/80">Arrow right</span>
               </button>
             </div>
@@ -530,13 +496,17 @@ export default function App() {
               <p>This is a simple flashcard app to help you study vocabulary decks for A1 German. The app is
                 entirely client-side and stores your progress in your browser. The app gives the best experience on desktop, but should work on mobile as well.
               </p>
-              <p>Use the buttons or keyboard shortcuts to navigate through the flashcards.</p>
-              <p>Press Arrow down to flip. Arrow left marks "didn't know", arrow right marks "got it".</p>
-              <p>Press Arrow up to play audio when available.</p>
-              <p>Use review mode to cycle through the missed cards that you didnt know.</p>
+              <p> Desktop Power User : Use the buttons or keyboard shortcuts to navigate through the flashcards.</p>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>Press Arrow down to flip and show the answer.</li>
+                <li>Arrow left marks "didn't know". The Didn't know cards are recorded and you can review them again when you want.</li>
+                <li>Arrow right marks "got it". These are cards which you know the answer for.</li>
+                <li>Press Arrow up to play audio when available.</li>
+              </ul>
+              <p>Use review mode to cycle through the missed cards that you didnt know to fill up the knowledge gaps</p>
               <p>Your progress is saved locally; use Reset to clear it.</p>
 
-              <p>If you have any questions or feedback, feel free to reach out on social media handles shared in footnote!</p>
+              <p>If you have any questions or feedback, feel free to reach out on social media handles shared in footnote or open the issue on the <a className="text-blue-500" href="https://github.com/imakshayverma/deckster-lab-a1-german" target="_blank">repository</a>!</p>
             </div>
             <div className="mt-6 flex items-center justify-end">
               <button
